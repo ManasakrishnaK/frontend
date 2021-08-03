@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Grid, Paper, TextField, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import {tabsContext} from '../App'
+import {logsContext} from '../App'
 
 const useStyles = makeStyles(theme => ({
     fieldSpacing: {
@@ -11,6 +13,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function Register() {
+    const {state, dispatch} = useContext(logsContext);
+    const {tabValue, setTabValue} = useContext(tabsContext)
     const classes = useStyles();
     const history = useHistory()
     const [user, setUser] = useState({ userName: "", email: "", password: "", confirmPassword: "" })
@@ -25,7 +29,9 @@ function Register() {
             event.preventDefault();
             let result = await axios.post("http://localhost:3002/api/v1/user/register", user)
             console.log(result);
-            //history.push('/')
+            dispatch({type:'USER', payload:true})
+            setTabValue(0)
+            history.push('/')
         } catch (error) {
             console.log(`error at ${error}`)
         }
