@@ -51,9 +51,9 @@ function Register() {
                                 <TextField fullWidth label="Email" variant="filled" name="email" value={email} required onChange={changeHandler} />
                             </div>
                             <div className={classes.fieldSpacing}>
-                                <TextField fullWidth label="Password" variant="filled" name="password" value={password} required onChange={changeHandler} />
+                                <TextField type="password" fullWidth label="Password" variant="filled" name="password" value={password} required onChange={changeHandler} />
                             </div> <div className={classes.fieldSpacing}>
-                                <TextField fullWidth label="CheckPassword" variant="filled" name="confirmPassword" value={confirmPassword} required onChange={changeHandler} />
+                                <TextField type="password" fullWidth label="CheckPassword" variant="filled" name="confirmPassword" value={confirmPassword} required onChange={changeHandler} />
                             </div>
                             <div>
                                 <Button type="submit" fullWidth variant="contained" color="primary">Register User</Button>
